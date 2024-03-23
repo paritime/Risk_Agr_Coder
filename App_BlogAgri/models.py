@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.core.validators import MinValueValidator
 from App_BlogAgri.choices import *
 from django.utils import timezone
 from django.utils.text import slugify

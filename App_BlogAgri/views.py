@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from App_BlogAgri.forms import *
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from App_BlogAgri.models import *
