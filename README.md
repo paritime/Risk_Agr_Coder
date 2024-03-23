@@ -98,15 +98,15 @@ DATABASES = {
 ```
 ```
 **Inicio de Sesion**
-![App Screenshot](https://github.com/paritime/RISK_FINANCE_AGR/blob/Test_Paris/readme%20img/Login.png?raw=true)
+![App Screenshot](https://github.com/paritime/Risk_Agr_Coder/blob/main/readme%20img/Login.png?raw=true)
 ```
 ```
 **Registro**
-![App Screenshot](https://github.com/paritime/RISK_FINANCE_AGR/blob/Test_Paris/readme%20img/Login.png?raw=true)
+![App Screenshot](https://github.com/paritime/Risk_Agr_Coder/blob/main/readme%20img/Signup.png?raw=true)
 ```
 ```
 **Perfil con opción de editar**
-![App Screenshot](https://github.com/paritime/RISK_FINANCE_AGR/blob/Test_Paris/readme%20img/Actualizar%20Perfil.png?raw=true)
+![App Screenshot](https://github.com/paritime/Risk_Agr_Coder/blob/main/readme%20img/Actualizar%20Perfil.png?raw=true)
 
 ## Review
 Con la siguiente aplicación se pueden crear usuarios genéricos, que pueden hacer uso de App_RiskCalc y App_BlogAgri.
@@ -216,7 +216,7 @@ autor = models.ForeignKey(
 2.4 Se genero un archivo choices.py para poder administrar las tuplas que sirven para aquellos campos del modelo que utilzan valores predefinidos, para el caso especifico de la App_BlogAgri, se definieron si las publicaciones son publicas o privadas y los tipos de categorias del blog. 
 
 **Definicion de choices**
-![App Screenshot](https://github.com/paritime/RISK_FINANCE_AGR/blob/Test_Paris/readme%20img/Choices.png?raw=true)
+![App Screenshot](https://github.com/paritime/Risk_Agr_Coder/blob/main/readme%20img/Choices.png?raw=true)
 
 Con relación a los formularios, se definio **PostForm** con 5 campos:
 ```
@@ -274,7 +274,7 @@ El uso de URL con parámetros, vistas y formularios para permitir la edición de
 ```
 También es importante señalar que la vinculación de esta App con las validaciones de usuarios, afecta el comportamiento de alguinos templates, en donde dependiendo si el usuario ha realizado alguina publicación se muestran en un apartado especial y en caso de no haber publicado nada, aún puede ver las publicaciones de otros usuarios, pero no puede editarlas o borrarlas, siendo posible únicamente aplicar el borrado y editado si el mismo usuario que las creo, las desea modificar. 
 
-![App Screenshot](https://github.com/paritime/RISK_FINANCE_AGR/blob/Test_Paris/readme%20img/blogfoto.png?raw=true)
+![App Screenshot](https://github.com/paritime/Risk_Agr_Coder/blob/main/readme%20img/blogfoto.png?raw=true)
 
 
 ## c) App_RiskCalc
