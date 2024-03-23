@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>RiskAgro | Calculadora de Riesgo</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'assets\dinero.png' %}" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css\styles.css' %}" rel="stylesheet" /> 
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-5">
+                {% block content1 %}
+                <a class="navbar-brand" href="/inicio">Start Bootstrap</a>
+                {% endblock %}
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">                    
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">                           
+                        {% if user.is_superuser %}
+                        <strong><li class="nav-item"><a class="nav-link" href="/admin">Admin </a></li></strong>
+                        {% endif %}
+                        <li class="nav-item"><a class="nav-link" href="/simulador">Simulador de Riesgo </a></li>
+                        <li class="nav-item"><a class="nav-link" href="/blog">Blog </a></li>     
+                        {% if user.is_authenticated %}                       
+                        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>                        
+                        {% else %}                        
+                        <li class="nav-item"><a class="nav-link" href="/login"> Inicio de Sesión </a></li>    
+                        <li class="nav-item"><a class="nav-link" href="/signup">Registro</a></li>
+                        {% endif %}     
+                     </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        {% load static %}
+        {% block content2 %}
+        <div class="container px-4 px-lg-5">
+            <!-- Heading Row-->
+            <div class="row gx-4 gx-lg-5 align-items-center my-5">
+                
+                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'assets\stock_marketlike.jpg' %}" alt="..." /></div>
+                <div class="col-lg-5">
+                    <h1 class="font-weight-light">Bienvenido a RiskAgro</h1>
+                    <p>Proyecto para generar una app de Django que permita calcular el nivel de riesgo para el otrogamiento de 
+                        créditos dirigidos a participantes del sector agroalimentario</p>
+                    <p>Se ha implementado un Blog de noticias agricolas para complementar el portal, con las funcionalidades
+                        de un CRUD.
+                    </p>
+            </div>
+            </div>
+            {% endblock %}
+            <!-- Call to Action-->
+            {% block contentbar %}  
+            <div class="card text-white bg-secondary my-5 py-4 text-center">
+                <div class="card-body"><h3 class="text-white m-0">Proyecto en desarrollo con 3 modelos y un sistema de autorización de usuarios</h3></div>
+            </div>
+            {% endblock %}
+
+            {% block content3 %}
+            <!-- Content Row-->
+            {% if user.is_authenticated %}
+            <div class="card-container row gx-4 gx-lg-5">
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <p class="card-paragraph">1</p>      
+                        <h3 class="card-title">Registro de Solicitantes</h3>
+                        <p class="card-text">Registra solicitantes de crédito para asignar algún proyecto para validar el riesgo del mismo</p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-read-more" href="/reg_solicitante">Registro</a></div>
+                </div>
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <p class="card-paragraph">2</p>
+                        <h3 class="card-title">Vinculación de Proyectos</h3>
+                        <p class="card-text">Principales características de proyectos agroalimentarios que se pueden asociar a solicitantes previamente registrados</p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-read-more" href="/reg_proy">Vinculación</a></div>
+                </div>
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <p class="card-paragraph">3</p>
+                        <h3 class="card-title">Niveles de Riesgo</h3>
+                        <p class="card-text">Consulta el nivel de riesgo de los diferentes proyectos que registres.</p>
+                        <p><strong>Unicamente se podrá consultar los proyectos registrados por el usuario</strong></p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-read-more" href="/consulta">Consulta</a></div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        {% endblock %}
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Paris Ramos de Cervantes 2024</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+       <!-- <script src="js/scripts.js"></script>-->
+    </body>
+</html>

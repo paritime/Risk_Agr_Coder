@@ -1,0 +1,63 @@
+{% extends 'base.html' %} 
+
+# Primer bloque
+{% block content1 %}
+{% if user.is_authenticated %}
+<a class="navbar-brand" href="/inicio">
+    {{etiqueta}} /
+</a>
+<a class="navbar-brand" href="/perfil">
+    {{user.username}} 
+</a>
+
+{% else %}
+<a class="navbar-brand" href="/inicio">
+    {{etiqueta}} 
+</a>
+{% endif %}
+{% endblock %}
+
+{% block contentbar %}
+{% endblock %}
+
+{% block content2 %}
+{% if confirm %}
+<div class="alert alert-success">{{confirm}}</div>
+{% endif %}  
+<form method="POST" class="mi-formulario">
+    {% csrf_token %}
+    <div class="mi-formulario">
+        <label for="id_username">Usuario:</label>
+            {{ form.username.errors }}
+            {{ form.username }}  
+
+        <label for="id_nombres">Nombres:</label>
+        {{ form.first_name.errors }}
+        {{ form.nombres }}
+
+        <label for="id_apellidos">Apellidos:</label>
+        {{ form.last_name.errors }}
+        {{ form.apellidos }}
+
+        <label for="id_email">Email:</label>
+        {{ form.email.errors }}
+        {{ form.email }}
+
+        <label for="id_email">Contraseña:</label>
+        {{ form.password1.errors }}
+        {{ form.password1 }}
+
+        <label for="id_email">Confirma la contraseña:</label>
+        {{ form.password2.errors }}
+        {{ form.password2 }}
+    </div>
+    <div class="boton-container">
+      <button type="submit" class = "btn btn-primary"  href="#" role="button">
+        Actualizar
+      </button>
+    </div>    
+{% endblock %}
+
+{% block content3 %}
+
+{% endblock %}

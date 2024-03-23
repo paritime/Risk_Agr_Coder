@@ -1,0 +1,44 @@
+{% extends 'base.html' %}.
+
+# Primer bloque
+{% block content1 %}
+{% if user.is_authenticated %}
+<a class="navbar-brand" href="/inicio">
+{{user}}
+</a>
+{% else %}
+<a class="navbar-brand" href="/perfil">
+    {{mensaje}} 
+</a>
+{% endif %}
+{% endblock %}
+
+{% block content2 %}
+<div class="blog-post">
+    {% load static %}
+    <div class="post-image">
+        {% if post.imagen %}
+        <img src="{{ post.imagen.url }}" alt="{{ post.titulo }}" class="post-image">
+        {% elif post.imagen is None %}
+        <img src="{% static 'assets\stock_marketlike.jpg' %}" alt="iamgen demo" class="post-image">
+        {% endif %}
+    </div>
+
+    <div class="post-content">
+        <h2>{{ post.titulo }}</h2>
+        <p class="post-meta">Publicado por {{ post.autor }} el {{ post.publicacion_post }}</p>
+        <p class="post-meta">* Categoría: {{ post.tema_post }} </p>
+        <div class = "post-text">
+            {% for paragraph in paragraphs %}
+            <p>{{ paragraph }}</p>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block contentbar %}
+{% endblock %}
+
+{% block content3 %}
+{% endblock %}

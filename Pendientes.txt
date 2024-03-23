@@ -1,0 +1,33 @@
+a) La forma en la que se filtra mediante el campo en ConsultaPersonaForm(forms.Form), es interesante por que le pasamos un
+0arametro user, que luego mediante la vista lo obtendremos y nos permitira evaluar si es super user o no.
+
+b) Revisar que devuelve Persona.objects.get(pk=persona_id) y que devuelve paquetes_tec = Paquete_Tec.objects.filter(persona=persona)
+
+c) Conceptos importantes: 
+   - Validadores de formularios personalizados / Raise Validationerror
+   - Formularios personalizados que permiten desplegar 
+   selecciones dependiendo del request.user
+   - Uso de choices (tuplas)
+   - if y for para mostrar variables de modelos en templates.
+   - Foreingkeys e instancias de objetos para relacionar modelos de uno a muchos.
+   - Revisar como implementar modelos de de uno a uno.
+   - Caso de ubicación.paquete.cultivo ( como una Foreingkey que es un objeto en otro modelo, nos sirve para acceder a sus valores)
+
+Pendientes//////
+
+1) Iniciar con las vistas para la puiblicación. 
+
+* Se debe de considerar que los usuarios pueden editar y borrar sus publicaciones, pero solo el administrador puede borrar las imagenes
+✅ Crear un formulario para crear las publicaciones
+✅Crear un formulario para editar las publicaciones 
+* Crear un formulario para borrar las publicaciones
+✅ Generar en el template del formulario un boton que diga publicar y que te envíe a crear puiblicacion
+✅ Crear validaciones personalizadas
+✅Verificar el usuario antes de enviar
+✅Crear template donde se recorran todas las publicaciones que el usuario de request o loggeado ha realizado.
+✅En el template de blog se deben de mostrar todas las publicaciones por orden de fecha de publicacion. 
+✅Verficiar validación de SLUG para publicación o validación de publicación con mismo nombre. 
+
+
+***Revisar si se puede usar una metodología igual en CustomUserChangeForm que en CustomUserCreationForm*** 
+

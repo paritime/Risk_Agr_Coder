@@ -1,0 +1,49 @@
+{% extends 'base.html' %} 
+
+# Primer bloque
+{% block content1 %}
+{% if user.is_authenticated %}
+<a class="navbar-brand" href="/inicio">
+    {{mensaje}} /
+</a>
+<a class="navbar-brand" href="/perfil">
+{{user}}
+</a>
+{% else %}
+<a class="navbar-brand" href="/inicio">
+    {{mensaje}} 
+</a>
+{% endif %}
+{% endblock %}
+
+# Segundo bloque
+{% block content2 %}
+<div class="container">
+    <p style="color: red;">{{error_message}}</p>
+</div>
+{% endblock %}
+
+{% block contentbar %}
+{% endblock %}
+
+# Tercer bloque
+{% block content3 %}
+<div class="container">
+  <h1>Ingresar</h1>
+  <form method="POST" class ="mi-formulario" style="display: inline-block;">
+    {% csrf_token %}
+    <div class="mi-formulario">
+      <label for="id_username">Usuario:</label>
+      {{ form.username.errors }}
+      {{ form.username }}
+      <label for="id_password1">Contraseña:</label>
+      {{ form.password.errors }}
+      {{ form.password }}
+    </div>
+    <button type="submit" class = "btn btn-primary"  href="#" role="button">
+      Signup
+    </button>
+  </form>
+</div>
+</form>
+{% endblock %}

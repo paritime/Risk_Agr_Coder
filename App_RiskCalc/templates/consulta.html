@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+# Primer bloque
+{% block content1 %}
+{% if user.is_authenticated %}
+<a class="navbar-brand" href="/inicio">
+    {{mensaje}} /
+</a>
+<a class="navbar-brand" href="/perfil">
+{{user}}
+</a>
+{% else %}
+<a class="navbar-brand" href="/inicio">
+    {{mensaje}} 
+</a>
+{% endif %}
+{% endblock %}
+
+{% block content2 %}
+{% endblock %}
+
+{% block contentbar %}
+<div class="container">
+    <form method="POST" class="mi-formulario">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-primary" role="button">Búsqueda</button>
+    </form>
+</div>
+
+    {% if persona %}
+    <div class="card1">
+        <h2>Información de la persona seleccionada:</h2>
+        <div class="list-group list-group-flush">
+            <p><strong> Nombre: </strong>{{ persona.nombre }}</p>
+            <p><strong> Apellido Paterno: </strong> {{ persona.apellido_paterno }}</p>
+            <p><strong> Apellido Materno: </strong>{{ persona.apellido_materno }}</p>
+            <p><strong> Usuario asignado: </strong>{{ persona.user }}</p>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if ubicaciones %}
+    <div class="card1">
+        <h2>Proyectos asociados</h2>
+        <ul class="list-group list-group-flush">
+            {% for ubicacion in ubicaciones %}
+            <li class="list-group-item">
+                <strong>Estado:</strong> {{ ubicacion.estado }} <br>
+                <strong>Municipio:</strong> {{ ubicacion.municipio }} <br>
+                <strong>Cultivo:</strong> {{ ubicacion.paquete_tec.nombre_cultivo }} <br>
+                <strong>Rendimiento:</strong> {{ ubicacion.paquete_tec.rendimiento_promedio }} toneladas x hectárea <br>
+                <strong>Hectáreas:</strong> {{ ubicacion.paquete_tec.hectareas }} HA <br>
+                <strong>Riesgo:</strong> {{ ubicacion.paquete_tec.riesgo }} <br>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% else %}  
+    <div class = plaintext >
+        <h2>Sin proyectos asociados</h2>
+    </div>
+    {% endif %}
+{% endblock %}
+
+
+
+

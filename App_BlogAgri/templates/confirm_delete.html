@@ -1,0 +1,37 @@
+{% extends 'base.html' %}.
+
+# Primer bloque
+{% block content1 %}
+{% if user.is_authenticated %}
+<a class="navbar-brand" href="/inicio">
+{{user}}
+</a>
+{% else %}
+<a class="navbar-brand" href="/perfil">
+    {{mensaje}} 
+</a>
+{% endif %}
+{% endblock %}
+
+{% block content2 %}
+{% endblock %}
+
+{% block contentbar %}
+<div id="post-contenedor" class="blog-post">
+<h2 id="confirmacion-titulo">¿Estás seguro de querer borrar esta publicación?</h2>
+</div>
+<div id="post-contenedor" class="blog-post">
+    <div class="post-content">
+        <h2 id="post-titulo">{{ post.titulo }}</h2>
+        <p id="post-meta" class="post-meta">Publicado por {{ post.autor }} el {{ post.publicacion_post }}</p>
+    </div>
+</div>
+<form id="form-confirmacion" action="{% url 'delete_post' post.id %}" method="post">
+    {% csrf_token %}
+    <input id="boton-confirmacion" type="submit" value="Confirmar eliminación">
+</form>
+{% endblock %}
+
+{% block content3 %}
+{% endblock %}
+

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}.
+
+# Primer bloque
+{% block content1 %}
+{% if user.is_authenticated %}
+<a class="navbar-brand" href="/inicio">
+    {{mensaje}} /
+</a>
+<a class="navbar-brand" href="/perfil">
+{{user}}
+</a>
+{% else %}
+<a class="navbar-brand" href="/inicio">
+    {{mensaje}} 
+</a>
+{% endif %}
+{% endblock %}
+
+{% block content2 %}
+{% if form %}
+  <form action="{% url 'edit_post' post.id %}" method="POST" class="mi-formulario" enctype="multipart/form-data">
+  {%csrf_token%}
+  {% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+      {% for field, error_list in form.errors.items %}
+        {% for error in error_list %}
+          <strong>{{ field|title }}</strong>: {{ error }}
+        {% endfor %}
+      {% endfor %}
+    </div>
+  {% endif %}
+  {{form.as_p}}
+  <div class="boton-container">
+      <button type="submit">Guardar</button>
+    </div>
+  </form>
+  {% endif %}
+{% endblock %}
+
+{% block contentbar %}
+{% endblock %}
+
+{% block content3 %}
+{% if confirmacion %}
+    <div class="confirmation-container">
+        <a>{{ confirmacion }}</a>
+        <div class="button-container">
+            <a href="{% url 'posts_user' %}" class="btn-read-more">Volver a mis publicaciones</a>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

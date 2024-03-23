@@ -1,0 +1,64 @@
+{% extends 'base.html' %}.
+
+# Primer bloque
+{% block content1 %}
+{% if user.is_authenticated %}
+<a class="navbar-brand" href="/inicio">
+    {{mensaje}} /
+</a>
+<a class="navbar-brand" href="/perfil">
+{{user}}
+</a>
+{% else %}
+<a class="navbar-brand" href="/inicio">
+    {{mensaje}} 
+</a>`
+{% endif %}
+{% endblock %}
+
+{% load static %}
+{% block content2 %}
+<div>
+    <div class="button-container">    
+        <a class="btn btn-primary btn-sm" href="/create_post">Nueva Publicación</a>  
+        <a class="btn btn-primary btn-sm" href="/blog/user/">Mis publicaciones</a>  
+    </div>
+</div>
+
+{% if posts %}
+<div class="card-container">
+    {% for post in posts %}
+    <div class="card">
+        <div class="card-thumbnail">           
+            {% if post.imagen %}
+                <img src="{{ post.imagen.url }}" alt="Imagen del post">
+            {% else %}
+                <img src="{% static 'assets\stock_marketlike.jpg' %}" alt="Imagen genérica">
+            {% endif %}            
+        </div>
+        <div class="card-content">
+            <h2>{{ post.titulo }}</h2>
+            <h4>De: {{ post.autor }}</h4>           
+            <p>{{ post.contenido|slice:":200" }}...</p>  
+            <a href='{% url "post" post.slug %}' class="btn-read-more">Leer más</a>
+            {% if user == post.autor %}
+                <a href='{% url "edit_post" post.id %}' class="btn-edit">Editar</a>
+                <a href='{% url "confirm_delete" post.id %}' class="btn-delete">Borrar</a>
+            {% endif %}                  
+        </div>        
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div id="post-contenedor" class="blog-post">
+    <h2>Sin publicaciones</h2>
+</div>
+
+{% endif %}
+{% endblock %}
+
+{% block contentbar %}
+{% endblock %}
+
+{% block content3 %}
+{% endblock %}
