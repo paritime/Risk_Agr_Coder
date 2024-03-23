@@ -1,0 +1,66 @@
+{% extends 'base.html' %}.
+
+# Primer bloque
+{% block content1 %}
+{% if user.is_authenticated %}
+<a class="navbar-brand" href="/inicio">
+    {{mensaje}} /
+</a>
+<a class="navbar-brand" href='/perfil'>
+{{user}}
+</a>
+{% else %}
+<a class="navbar-brand" href="/inicio">
+    {{mensaje}} 
+</a>
+{% endif %}
+{% endblock %}
+
+{% block content2 %}
+<div class="about-container">
+    <h1><strong>Acerca del Proyecto</strong></h1>
+    <div class="sub-section">
+        <h2>Paris Ramos</h2>
+        <p>Economista Mexicano con más de 15 años de experiencia a nivel Directivo en el sector público y privado. Firme creyente en que el desarrollo y diseño de software son elementos indispensables para ofrecer soluciones óptimas a los desafíos contemporáneos. </p>
+    </div>
+    <div class="sub-section">
+        <h2>Proyecto</h2>
+        <p>El proyecto RiskAgr sde divide en 3 aplicaciones de Django implementando la arquitectura MVT:</p>
+
+<ol>
+  <li>
+    <p>App_Usuarios que sirve para administrar el registro, el acceso y los perfiles de los usuarios en el sistema.</p>
+  </li>
+  <li>
+    <p>App_BlogAgri, que implementa un concepto CRUD para publicaciones de un blog, en esta caso noticias del sector agroalimentario, vinculada a la aplicación de usuarios para que solo los autores de las publicaciones tengan la capacidad de borrar o editar las publicaciones que ellos mismos hicieron. Aún cuando un admin (superusuario), mediante el enlace disponible para el sistema de administración de django puede eliminar cualquier publicación.</p>
+  </li>
+  <li>
+    <p>App_RiskCalc, que simula un sistema mediante el cual se puede asociar solicitantes de crédito, con proyectos y por último consultar los proyectos asociados a cada solicitante.</p>
+  </li>
+</ol>
+
+<p>Entre las 3 aplicaciones, se prentende abarcar los requerimientos solicitados para la entrega final del proyecto, con el concepto de CRUD aplicado en la App_BlogAgri y la consulta de registros creados en App_RiskCalc.</p>
+    </div>
+    <div class="sub-section">
+        <h2>Pendientes</h2>
+<ol>
+  <li>
+    <p>Implementar un sistema de paginación en el Blog con django.core.paginator</p>
+  </li>
+  <li>
+    <p>Aplicar consultas asincronas para la búsqueda y filtrado de datos, tanto par las aplicaciones como para el blog</p>
+  </li>
+  <li>
+    <p>Diseñar en el sistema de validación de riesgo un modelo real y utilizar Pandas para refalizar los calculos con base en modelos con mayor información </p>
+  </li>
+</ol>
+   </div>
+</div>
+
+{% endblock %}
+
+{% block contentbar %}
+{% endblock %}
+
+{% block content3 %}
+{% endblock %}

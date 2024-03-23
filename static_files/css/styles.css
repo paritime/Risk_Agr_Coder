@@ -87,7 +87,34 @@
   box-sizing: border-box;
 }
 
-/* Estilos específicos para la página de confirmación de eliminación */
+/* Estilos específicos para la página "About" */
+
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.about-container h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.sub-section {
+  margin-bottom: 30px;
+}
+
+.sub-section h2 {
+  font-size: 1.8rem;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.sub-section p {
+  font-size: 1.2rem;
+  color: #666;
+}
 
 /* Estilo para el título de confirmación */
 #confirmacion-titulo {

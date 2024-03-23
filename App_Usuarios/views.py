@@ -110,7 +110,7 @@ def perfil(request):
     """
     confirm = 'Se han actualizado los datos'
     user = request.user
-    etiqueta = 'Perfil'
+    etiqueta = 'Inicio'
     if request.method == 'POST':
         form = CustomUserChangeForm(request.POST, instance=user)
         if form.is_valid():

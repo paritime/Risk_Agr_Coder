@@ -9,6 +9,20 @@ from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 
+def about(request):
+    """
+Vista para la pagina de informacion del proyecto
+
+    Parámetros:
+        request (HttpRequest): La solicitud HTTP recibida por la vista.
+
+    Returns:
+        HttpResponse: Una respuesta HTTP que renderiza la plantilla 'about.html' con un mensaje.
+
+    """
+    Titulo = 'RiskAgro'
+    return render(request, 'about.html', {'mensaje': Titulo})
+
 
 def blog(request):
     """

@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from App_RiskCalc.views import *
 from App_BlogAgri.views import *
+from App_Usuarios.views import *
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -27,5 +28,6 @@ urlpatterns = [
     path('', include('App_RiskCalc.urls')),
     path('', include('App_BlogAgri.urls')),
     path('', include('App_Usuarios.urls')),
+    path('about/', about, name='about'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
