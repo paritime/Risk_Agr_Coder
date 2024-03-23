@@ -79,7 +79,7 @@ Vista para iniciar sesión en RiskAgro.
             })
         else:
             login(request, user)
-            return redirect('simulador')
+            return redirect('blog')
 
 
 def logout(request):
