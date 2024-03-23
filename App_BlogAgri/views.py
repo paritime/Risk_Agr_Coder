@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from App_BlogAgri.models import *
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse
+
 
 # Create your views here.
 
