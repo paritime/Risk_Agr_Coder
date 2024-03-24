@@ -29,25 +29,25 @@ pass: coder12345
 ```
 
 ## Proyecto RiskAgr
-El proyecto RiskAgr sde divide en 3 aplicaciones de Django implementando la arquitectura MVT:
+"El proyecto RiskAgr se divide en 3 aplicaciones de Django implementando la arquitectura MVT:
 
-1. App_Usuarios que sirve para administrar el registro, el acceso y los perfiles de los usuarios en el sistema.
+**App_Usuarios**, que sirve para administrar el registro, el acceso y los perfiles de los usuarios en el sistema.
 
-2. App_BlogAgri, que implementa un concepto CRUD para publicaciones de un blog, en esta caso noticias del sector agroalimentario, vinculada a la aplicación de usuarios para que solo los autores de las publicaciones tengan la capacidad de borrar o editar las publicaciones que ellos mismos hicieron. Aún cuando un admin (superusuario), mediante el enlace disponible para el sistema de administración de django puede eliminar cualquier publicación. 
+**App_BlogAgri**, que implementa un concepto CRUD para publicaciones de un blog, en este caso noticias del sector agroalimentario, vinculada a la aplicación de usuarios para que solo los autores de las publicaciones tengan la capacidad de borrar o editar las publicaciones que ellos mismos hicieron. Aún cuando un admin (superusuario), mediante el enlace disponible para el sistema de administración de Django, puede eliminar cualquier publicación.
 
-3. App_RiskCalc, que simula un sistema mediante el cual se puede asociar solicitantes de crédito, con proyectos y por ultimo consultar los proyectos asociados a cada solicitante. 
+**App_RiskCalc**, que simula un sistema mediante el cual se puede asociar solicitantes de crédito con proyectos y, por último, consultar los proyectos asociados a cada solicitante.
 
-Entre las 3 aplicaciones, se prentende abarcar los conceptos solicitados para la entrega final del proyecto, con el comcepto de CRUD aplicado en la App_BlogAgri y la consulta de registros creados en App_RiskCalc.
+Entre las 3 aplicaciones, se pretende abarcar los conceptos solicitados para la entrega final del proyecto, con el concepto de CRUD aplicado en App_BlogAgri y la consulta de registros creados en App_RiskCalc."
 
 ## Configuraciones
 
-Se deben de tener las siguientes configuraciones y consideraciones iniciales: 
+"Se deben tener las siguientes configuraciones y consideraciones iniciales:
 
-1. Se crearon  carpetas *static_files* , *templates* y *media*, en la raíz del directorio del proyecto, con el objetivo  administrar de una mejor manera, los elementos que se comparten entre todas las apps, como lo son los estilos de css, el template base que sirve de padre para las demas plantillas html de las apps y una carpeta para almacenar las imagenes que se cargan mediante los formularios de las apps. 
+1. Se crearon las carpetas static_files, templates y media en la raíz del directorio del proyecto. El objetivo es administrar de una mejor manera los elementos que se comparten entre todas las aplicaciones, como los estilos CSS, el template base que sirve de padre para las demás plantillas HTML de las aplicaciones, y una carpeta para almacenar las imágenes que se cargan mediante los formularios de las aplicaciones.
 
-2. Lo anterior requirio modificar el archivo de **settings** del proyecto en los siguientes apartados:
+2. Lo anterior requirió modificar el archivo de settings del proyecto en los siguientes apartados:
 
-Para templates se agregó el directorio 'DIRS': [os.path.join(BASE_DIR, 'templates')], que permite reconocer las carpetas que se llamen del mismo modo dentro del proyecto.
+Para templates se agregó el directorio 'DIRS': [os.path.join(BASE_DIR, 'templates')], lo cual permite reconocer las carpetas que se llaman del mismo modo dentro del proyecto."
 ```
 TEMPLATES = [
     {
@@ -72,7 +72,7 @@ STATICFILES_DIRS = [
 ]
 
 ```
-Para la carpeta que se utiliza para el almacenamiento de imagenes o archivos, *"media"*, se configuro la raíz del directorio y su URL mediante la implementación de: 
+Para la carpeta que se utiliza para el almacenamiento de imagenes o archivos, *"media"*, se configuró la raíz del directorio y su URL mediante la implementación de: 
 
 ```
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -92,7 +92,7 @@ DATABASES = {
 
 
 ## a) App_Usuarios
-1. La aplicación permite crear, autentificar y modificar usuarios (únicamente los atributos seleccionados)
+1. La aplicación permite crear, autenticar y modificar usuarios, únicamente los atributos seleccionados.
 2. Cuenta con 3 templates, 4 vistas y 2 formularios.
 3. Los formularios son personalizados con base en herencias de los incorporados por defecto por Django, que se utilizan para crear usuarios y para cambiar información de los mismos (**UserCreationForm y UserChangeForm**)
 ```
@@ -111,17 +111,17 @@ DATABASES = {
 ## Review
 Con la siguiente aplicación se pueden crear usuarios genéricos, que pueden hacer uso de App_RiskCalc y App_BlogAgri.
 
-Para la creación de usuarios con permisos de administración, se opto por colocar un link en la barra de navegación del template, que en caso de ser superusuario, pemrite acceder al administrador proporcionado por Django. 
+Para la creación de usuarios con permisos de administración, se optó por colocar un enlace en la barra de navegación del template, que en caso de ser superusuario, permite acceder al administrador proporcionado por Django.
 
-Uno de los puntos que deben resaltar de esta App, es que no se definio ningún modelo, sin embargo se utilizó una adaptación de formularios para la creación de usuarios y para la adición de algunos atributos. 
+Uno de los puntos que debe resaltarse de esta App es que no se definió ningún modelo. Sin embargo, se utilizó una adaptación de formularios para la creación de usuarios y para la adición de algunos atributos.
 
-Tanto *UserCreationForm* como *UserChangeForm*, son formularios que derivan del **Modelo User** y por lo tanto ese es el modelo utilizado en esta App.
+Tanto UserCreationForm como UserChangeForm son formularios que derivan del Modelo User, y por lo tanto, ese es el modelo utilizado en esta App.
 
-La elección de crear personalizaciones de formularios, se debio a que buscaba experimentar con los diferentes métodos para mostrar en el template solo ciertos campos, pero aprovechar las validaciones que ya exisitian en los formularios padres. 
+La elección de crear personalizaciones de formularios se debió a que se buscaba experimentar con los diferentes métodos para mostrar en el template solo ciertos campos, pero aprovechar las validaciones que ya existían en los formularios padres.
 
-El uso de Clases Meta para definir el modelo al que hacen referencia los formularios personalizados y la definición de campos especificos para mostrarse, ayudan para su implementación en los templates.
+El uso de Clases Meta para definir el modelo al que hacen referencia los formularios personalizados y la definición de campos específicos para mostrarse ayudan para su implementación en los templates.
 
-También la posibilidad de sobreescribir algunos métodos como save(), permite asignar variables a los modelos sin tener que pasarlos al formulario y/o asignar campos del formulario a los valores definidos en el modelo. 
+También, la posibilidad de sobreescribir algunos métodos como save() permite asignar variables a los modelos sin tener que pasarlos al formulario y/o asignar campos del formulario a los valores definidos en el modelo. 
 
 **Creación de Usuarios**
 
@@ -179,12 +179,12 @@ class CustomUserChangeForm(UserChangeForm):
         return user
 ```
 
-Se utilizaron 4 vistas **(registro, ingresar, logout y perfil)** en el proyecto que utilizaron las funciones incorporadas en Django para autentificar, ingresar y salir de la cuenta de usuario:
+Se utilizaron 4 vistas (registro, ingresar, logout y perfil) en el proyecto que utilizaron las funciones incorporadas en Django para autenticar, ingresar y salir de la cuenta de usuario:
 
 ```
 from django.contrib.auth import login, authenticate, logout as auth_logout
 ```
-También se utilizó el decorador login_required para poder simplificar el mostrar o no la vista en caso de que los usuarios no se encontraran autentificados
+También se utilizó el decorador login_required para poder simplificar el mostrar o no la vista en caso de que los usuarios no se encontraran autenticados.
 
 ```
 from django.contrib.auth.decorators import login_required
@@ -194,18 +194,18 @@ from django.contrib.auth.decorators import login_required
 
 ## b) App_BlogAgri
 
-1. El objetivo de esta apliación es implementar un Blog para temas de agricultura, que los usuarios puedan consultar y que les permita borrar o modificar sus propias publicaciones. 
+1. El objetivo de esta aplicación es implementar un blog para temas de agricultura, que los usuarios puedan consultar y que les permita borrar o modificar sus propias publicaciones.
 
-2. En esta App se desarrollo el concepto de CRUD, para lo cual se diseño lo siguiente:
+2. En esta App se desarrolló el concepto de CRUD, para lo cual se diseñó lo siguiente:
 
-2.1 Un modelo Post para almacenar la información de las publicaciones.
+2.1. Un modelo Post para almacenar la información de las publicaciones.
 
-2.2 El campo de autor de la publicación se encuentra relacionado de uno a muchos con los usuarios. Es decir un usuario puede tener muchas publicaciones, pero una publicación solo puede tener un autor. 
+2.2. El campo de autor de la publicación se encuentra relacionado de uno a muchos con los usuarios. Es decir, un usuario puede tener muchas publicaciones, pero una publicación solo puede tener un autor.
 ```
 autor = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='blog_posts')
 ```
-2.3 Se creo un campo mediante *models.SlugField* que funciona para que una vez definido el titulo de la publicación, al modificar el metodo save(), se genere un valor que posteriormente nos sirva para identificar publicaciones en la url y que sirva para el posicionamiento SEO del Blog:
+2.3 Se creó un campo mediante models.SlugField que funciona para que una vez definido el título de la publicación, al modificar el método save(), se genere un valor que posteriormente nos sirva para identificar publicaciones en la URL y que sirva para el posicionamiento SEO del blog.
 ```
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -213,7 +213,7 @@ autor = models.ForeignKey(
             self.slug = slugify(self.titulo)
         super().save(*args, **kwargs)
 ```
-2.4 Se genero un archivo choices.py para poder administrar las tuplas que sirven para aquellos campos del modelo que utilzan valores predefinidos, para el caso especifico de la App_BlogAgri, se definieron si las publicaciones son publicas o privadas y los tipos de categorias del blog. 
+2.4 Se generó un archivo choices.py para poder administrar las tuplas que sirven para aquellos campos del modelo que utilizan valores predefinidos. Para el caso específico de la App_BlogAgri, se definieron si las publicaciones son públicas o privadas y los tipos de categorías del blog.
 
 **Definicion de choices**
 ![App Screenshot](https://github.com/paritime/Risk_Agr_Coder/blob/main/readme%20img/Choices.png?raw=true)
@@ -259,7 +259,7 @@ En cuanto a las vistas se definieron:
 7. **delete_post** para realizar el borrado de una publicación.
 ```
 ```
-El uso de URL con parámetros, vistas y formularios para permitir la edición de objetos específicos en los modelos, se utilza ampliamente en esta App, lo cual se ve reflejado en su uso en Templates. Para el caso de las listar publicaciones se utilizo como parámetro de selección de objeto **post.slug** para que el navegador mostrara el titulo de manera amigable en el navegador y para la edición se utilizo **post.id** .
+El uso de URL con parámetros, vistas y formularios para permitir la edición de objetos específicos en los modelos, se utilza ampliamente en esta App, lo cual se ve reflejado en su uso en Templates. Para el caso de listar publicaciones se utilizó como parámetro de selección de objeto **post.slug** para que el navegador mostrara el titulo de manera amigable en el navegador y para la edición se utilizo **post.id** .
 
 ```
         <div class="card-content">
@@ -272,16 +272,16 @@ El uso de URL con parámetros, vistas y formularios para permitir la edición de
                 <a href='{% url "confirm_delete" post.id %}' class="btn-delete">Borrar</a>
             {% endif %}   
 ```
-También es importante señalar que la vinculación de esta App con las validaciones de usuarios, afecta el comportamiento de alguinos templates, en donde dependiendo si el usuario ha realizado alguina publicación se muestran en un apartado especial y en caso de no haber publicado nada, aún puede ver las publicaciones de otros usuarios, pero no puede editarlas o borrarlas, siendo posible únicamente aplicar el borrado y editado si el mismo usuario que las creo, las desea modificar. 
+También es importante señalar que la vinculación de esta App con las validaciones de usuarios, afecta el comportamiento de algunos templates, en donde dependiendo si el usuario ha realizado alguna publicación, se muestran en un apartado especial y en caso de no haber publicado nada, aún puede ver las publicaciones de otros usuarios, pero no puede editarlas o borrarlas, siendo posible únicamente aplicar el borrado y editado si el mismo usuario que las creo, las desea modificar. 
 
 ![App Screenshot](https://github.com/paritime/Risk_Agr_Coder/blob/main/readme%20img/blogfoto.png?raw=true)
 
 
 ## c) App_RiskCalc
 
-1. La app simula de manera preliminar un simulador de riesgo, al que pueden acceder usuarios registrados, losd cuales deben de seguir los siguientes pasos:
-1.1 Acceder a Registro de Solicitantes, para crear el primer soliciante de crédito. 
-1.2 Acceder a Vinculación de Proyectos, mediante el cual podemmos asignar un proyecto al listado de solicitantes de crédito.
+1. La app simula de manera preliminar un simulador de riesgo, al que pueden acceder usuarios registrados, los cuales deben de seguir los siguientes pasos:
+1.1 Acceder al Registro de Solicitantes, para crear el primer solicitante de crédito. 
+1.2 Acceder a Vinculación de Proyectos, mediante el cual podemos asignar un proyecto al listado de solicitantes de crédito.
 1.3 Acceder a Niveles de Riesgo y seleccionar un Solicitante registrado
 1.4 Si el solicitante tiene proyectos asignados, se mostrara la información de los proyectos asociados como en el siguiente ejemplo:
 
@@ -302,7 +302,7 @@ Riesgo: Bajo
 
 ## Review
 
-1. La app implementa 3 modelos mediante los cuales se busca relacionar personas que soliciten creditos para el sector agroalimentario, con los paquetes tecnologícos (especificaciones como tecnología aplicada, tipo de cultivo, número de hectáreas... ), así como la ubicación en donde se desarrollara el proyecto, para poder generar un escenario del Riesgo del otorgamiento del credito asociado.
+1. La app implementa 3 modelos mediante los cuales se busca relacionar personas que soliciten creditos para el sector agroalimentario, con los paquetes tecnologícos (especificaciones como tecnología aplicada, tipo de cultivo, número de hectáreas... ), así como la ubicación en donde se desarrollará el proyecto, para poder generar un escenario de riesgo del otorgamiento del credito asociado.
 
 2. EL presente ejemplo, es una simplificación para poder implementar conceptos de programación mediante el framework de Django, entre otros: 
 
@@ -313,18 +313,18 @@ Riesgo: Bajo
 * Autorización y validación de usuarios mediante la clase *UserCreationForm*.
 * Decoradores básicos como *login_required*.
 * Validaciones personalizadas con *cleaned data*.
-* Implementaicón de la clase User para poder asignar privilegios básicos entre SuperUser y User.
+* Implementación de la clase User para poder asignar privilegios básicos entre SuperUser y User.
 * Condicionales y bucles con *jinja* para renderizar elementos desde las vistas en los templates.
 
 3. Las funciones y clases, tanto en vistas, modelos y forms del proyecto cuentan con docstring.
 
-4. Se genero adicionalmente a lo requerido el archivo choices.py que permite almacenar las tuplas que se pueden utilizar en el contexto de la creacion de los modelos, para campos específicos, tales como los Estados de un País (para este caso México).}
+4. Se genero adicionalmente a lo requerido, el archivo choices.py que permite almacenar las tuplas que se pueden utilizar en el contexto de la creacion de los modelos, para campos específicos, tales como los Estados de un País (para este caso México).
 
 
 
 ## Modelos
 
-El proyecto RiskAgr se encuentra diseñada en el patrón de arquitectura *Modelo - Vista -Template* de Django y cuenta con los siguientes modelos:
+El proyecto RiskAgr cuenta con los siguientes modelos:
 
 
 1 *Persona* con las siguientes caractéristicas
@@ -364,7 +364,7 @@ Atributos:
 
 * Los modelos cuentan con una relación de muchos a uno, de tal forma que una Persona (solicitante de crédito), puede tener muchas solicitudes, con diferentes características (paquiete tecnológico y ubicaciones)
 
-* También al hacer uso de la clase proporcionada por Django UserCreationForm, relacionamos estos modelos con el usaurio que genera los registros. Para que un usuario solo pueda visualizar la información que el ha registrado. Con excpeción del supersuser que puede visualizar toda la información registrada en la base de datos. 
+* También al hacer uso de la clase proporcionada por Django UserCreationForm, relacionamos estos modelos con el usaurio que genera los registros. Para que un usuario unicamente pueda visualizar la información que el ha registrado. Con excpeción del supersuser que puede visualizar toda la información registrada en la base de datos. 
 ## Formularios
 
 *Se han generado formularios para cada modelo y también se ha personalizado el formulario proporcionado por Django mediante la siguiente clase:
@@ -373,7 +373,7 @@ CustomUserCreationForm(UserCreationForm)
 ```
 Lo anterior con el objetivo de poder probar la implementación de campos adicionales a los establecidos por defecto en Django. 
 
-También se genero un formulario para poder utilizarlo como filtro en la consulta de registros de la plataforma
+**También se genero un formulario para poder utilizarlo como filtro en la consulta de registros de la plataforma**
 
 ```
 ConsultaPersonaForm(forms.Form)
